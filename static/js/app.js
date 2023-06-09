@@ -61,21 +61,22 @@ function drawAllCharts(nameID)
         delta: { reference: 9, increasing: { color: "green" } },
         gauge: {
           axis: { range: [0, 9], tickvals:[0,1,2,3,4,5,6,7,8,9], tickwidth: 1, tickcolor: "green" },
-          bar: { color: "green" },
+          bar: {color: "green", thickness: 0.1 }, 
           bgcolor: "white",
           borderwidth: 2,
           bordercolor: "gray",
           steps: [
-            { range: [0,1], color: "rgba(228, 242, 207, .5)" },
-            { range: [1,2], color: "rgba(210,233, 175, .5)" },
-            { range: [2,3], color: "rgba(192, 224, 143, .5)" },
-            { range: [3,4], color: "rgba(174, 216, 111, .5)" },
+            { range: [0,1], color: "rgba(228, 242, 207, .5)", name : "0-1", visible: true },
+            { range: [1,2], color: "rgba(210,233, 175, .5)" , name : "1-2", visible: true },
+            { range: [2,3], color: "rgba(192, 224, 143, .5)" , name : "2-3", visible: true },
+            { range: [3,4], color: "rgba(174, 216, 111, .5)", name: "3-4", visible: true },
             { range: [4,5], color: "rgba(156, 207, 53, .5)" },
             { range: [5,6], color: "rgba(136, 192, 22, .5)" },
             { range: [6,7], color: "rgba(114, 160, 44, .5)" },
             { range: [7,8], color: "rgba(91, 128, 35, .5)" },
             { range: [8,9], color: "rgba(68, 96, 26, .5)" }
           ],
+          
           threshold: {
             line: { color: "rgba(45, 64, 18, 0)", width: 4 },
             thickness: 0.75,
@@ -90,15 +91,11 @@ function drawAllCharts(nameID)
     var layout = {
       width: 900,
       height: 500,
-      xaxis : { title: "OTU ID" },
-      // margin: { t: 25, r: 25, l: 25, b: 25 },
-      // paper_bgcolor: "lavender",
-      // font: { color: "darkblue", family: "Arial" }
+      xaxis : { title: "OTU ID" }
+
     };
     
-    //Plotly.newPlot('myDiv', data, layout);
 
-   
     let trace2= {
       x: individualSamples['otu_ids'],
       y: individualSamples['sample_values'],
