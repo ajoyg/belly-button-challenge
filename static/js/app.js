@@ -25,7 +25,7 @@ function drawAllCharts(nameID)
     d3.select(".panel-body").html("");
     for (const[key,value] of Object.entries(sampleMetadata)) 
     {
-      d3.select(".panel-body").append("small").text(`${key}:${value}`).append("br");
+      d3.select(".panel-body").append("small").text(key+": "+value).append("br");
     };
     
     let individualSamples = data.samples.filter(sample => sample.id == nameID)[0];
@@ -84,9 +84,7 @@ function drawAllCharts(nameID)
         }
     } ];
     
-   
-
-
+  
    Plotly.newPlot('gauge', wScrubData);
     
     var layout = {
@@ -113,8 +111,6 @@ function drawAllCharts(nameID)
 
   });
 };
-
-
 
 function optionChanged(newId) {
     drawAllCharts(newId);
